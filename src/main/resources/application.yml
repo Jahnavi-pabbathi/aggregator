@@ -1,0 +1,4 @@
+apis:
+  order: http://localhost:8081/order_api/v1
+server:
+  port: 8080
