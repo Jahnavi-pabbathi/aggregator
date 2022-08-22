@@ -6,10 +6,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @EnableFeignClients
 @SpringBootApplication
-public class AggregatorapiApplication {
+public class AggregatorApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AggregatorapiApplication.class, args);
+		SpringApplication.run(AggregatorApiApplication.class, args);
 	}
 
 }

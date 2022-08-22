@@ -1,5 +1,6 @@
 package com.tgt.upcurve.aggregatorapi.controller;
 
+import com.tgt.upcurve.aggregatorapi.model.Delivery;
 import com.tgt.upcurve.aggregatorapi.model.Order;
 import com.tgt.upcurve.aggregatorapi.service.AggregatorService;
 import org.springframework.validation.annotation.Validated;
@@ -20,12 +21,14 @@ public class AggregatorController {
     public List<Order> getOrders(@Validated @PathVariable("customer_id") Integer customerId){
         return aggregatorService.getOrdersByCustomerId(customerId);
     }
+
     @GetMapping("/generate_qr/order_id/{order_id}/customer_id/{customer_id}")
-    public void generateQrCode(@Validated @PathVariable("order_id") Integer orderId, @PathVariable("customer_id") Integer customerId){
-
+    public Delivery generateQRCode(@Validated @PathVariable("order_id") Integer orderId, @PathVariable("customer_id") Integer customerId){
+        return aggregatorService.generateQRCode(orderId, customerId);
     }
-    @PostMapping("/confirm_delivery/order_id/{order_id}/customer_id/{customer_id}")
-    public void confirmDelivery(@Validated @PathVariable("order_id") Integer orderId, @PathVariable("customer_id") Integer customerId){
 
+    @PostMapping("/confirm_delivery/order_id/{order_id}/customer_id/{customer_id}")
+    public Delivery confirmDelivery(@Validated @PathVariable("order_id") Integer orderId, @PathVariable("customer_id") Integer customerId){
+        return aggregatorService.confirmDelivery(orderId, customerId);
     }
 }
