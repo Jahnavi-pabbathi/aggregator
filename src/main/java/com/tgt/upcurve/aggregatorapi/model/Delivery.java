@@ -26,6 +26,9 @@ public class Delivery {
     @JsonProperty("image_id")
     private Long imageId;
 
+    @JsonProperty("image_code")
+    private byte[] imageCode;
+
     @JsonProperty("payment_status")
     private String paymentStatus;
 
