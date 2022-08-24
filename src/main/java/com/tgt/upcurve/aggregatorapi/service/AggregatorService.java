@@ -38,6 +38,7 @@ public class AggregatorService {
         delivery.setPaymentStatus(order.getPaymentStatus());
         delivery.setDeliveryStatus("NOT-DELIVERED");
         delivery.setImageId(image.getId());
+        delivery.setImageCode(image.getImageCode());
         return deliveryRepository.saveDelivery(delivery);
     }
 
