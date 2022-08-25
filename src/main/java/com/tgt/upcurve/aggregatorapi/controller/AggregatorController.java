@@ -31,4 +31,9 @@ public class AggregatorController {
     public Delivery confirmDelivery(@Validated @PathVariable("order_id") Integer orderId, @PathVariable("customer_id") Integer customerId){
         return aggregatorService.confirmDelivery(orderId, customerId);
     }
+
+    @PostMapping("/guest_arrival/order_id/{order_id}/customer_id/{customer_id}")
+    public Boolean informCustomerArrival(@Validated @PathVariable("order_id") Integer orderId, @PathVariable("customer_id") Integer customerId){
+        return aggregatorService.informCustomerArrival(orderId, customerId);
+    }
 }

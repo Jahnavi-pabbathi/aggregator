@@ -48,4 +48,11 @@ public class AggregatorService {
         delivery.setPickupDate(LocalDateTime.now());
         return deliveryRepository.saveDelivery(delivery);
     }
+
+    public Boolean informCustomerArrival(Integer orderId, Integer customerId) {
+        // TODO : Send Message to the Stores Team on Guest Arrival
+        // Post to this parcel can be sent via the conveyor belt
+        // Assume that, After sending the parcel via conveyor belt, the Stores Team system send True
+        return true;
+    }
 }
