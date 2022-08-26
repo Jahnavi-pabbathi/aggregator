@@ -23,12 +23,15 @@ public class AggregatorController {
     }
 
     @GetMapping("/generate_qr/order_id/{order_id}/customer_id/{customer_id}")
-    public Delivery generateQRCode(@Validated @PathVariable("order_id") Integer orderId, @PathVariable("customer_id") Integer customerId){
+    public Delivery generateQRCode(@Validated @PathVariable("order_id")
+                                               Integer orderId, @PathVariable("customer_id")
+            Integer customerId){
         return aggregatorService.generateQRCode(orderId, customerId);
     }
 
     @PostMapping("/confirm_delivery/order_id/{order_id}/customer_id/{customer_id}")
-    public Delivery confirmDelivery(@Validated @PathVariable("order_id") Integer orderId, @PathVariable("customer_id") Integer customerId){
+    public Delivery confirmDelivery(@Validated @PathVariable("order_id") Integer orderId,
+                                    @PathVariable("customer_id") Integer customerId){
         return aggregatorService.confirmDelivery(orderId, customerId);
     }
 }
