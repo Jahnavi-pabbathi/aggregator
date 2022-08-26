@@ -10,5 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(name="image-api", url="${apis.image}")
 public interface ImageRepository {
     @RequestMapping(method = RequestMethod.GET, path="/generate_image/order_id/{order_id}/customer_id/{customer_id}")
-    public Image generateImage(@Validated @PathVariable("order_id") Integer orderId, @Validated @PathVariable("customer_id") Integer customerId);
+    public Image generateImage(@Validated @PathVariable("order_id") Integer orderId,
+                               @Validated @PathVariable("customer_id") Integer customerId);
 }

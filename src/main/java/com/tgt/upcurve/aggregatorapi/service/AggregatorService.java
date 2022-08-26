@@ -18,7 +18,8 @@ public class AggregatorService {
     private ImageRepository imageRepository;
     private DeliveryRepository deliveryRepository;
 
-    public AggregatorService(OrderRepository orderRepository, ImageRepository imageRepository, DeliveryRepository deliveryRepository) {
+    public AggregatorService(OrderRepository orderRepository,
+                             ImageRepository imageRepository, DeliveryRepository deliveryRepository) {
         this.orderRepository = orderRepository;
         this.imageRepository = imageRepository;
         this.deliveryRepository = deliveryRepository;
