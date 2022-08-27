@@ -1,9 +1,11 @@
 package com.tgt.upcurve.aggregatorapi.repository;
 
 import com.tgt.upcurve.aggregatorapi.model.Image;
+import com.tgt.upcurve.aggregatorapi.model.ImageRequest;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -11,4 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public interface ImageRepository {
     @RequestMapping(method = RequestMethod.GET, path="/generate_image/order_id/{order_id}/customer_id/{customer_id}")
     public Image generateImage(@Validated @PathVariable("order_id") Integer orderId, @Validated @PathVariable("customer_id") Integer customerId);
+
+    @RequestMapping(method = RequestMethod.POST, path="/generate_image")
+    Image generateImageByContent(@RequestBody ImageRequest content);
 }

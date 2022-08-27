@@ -2,10 +2,12 @@ package com.tgt.upcurve.aggregatorapi.service;
 
 import com.tgt.upcurve.aggregatorapi.model.Delivery;
 import com.tgt.upcurve.aggregatorapi.model.Image;
+import com.tgt.upcurve.aggregatorapi.model.ImageRequest;
 import com.tgt.upcurve.aggregatorapi.model.Order;
 import com.tgt.upcurve.aggregatorapi.repository.DeliveryRepository;
 import com.tgt.upcurve.aggregatorapi.repository.ImageRepository;
 import com.tgt.upcurve.aggregatorapi.repository.OrderRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -17,6 +19,9 @@ public class AggregatorService {
     private OrderRepository orderRepository;
     private ImageRepository imageRepository;
     private DeliveryRepository deliveryRepository;
+
+    @Value("${apis.delivery}")
+    private String deliveryApiURL;
 
     public AggregatorService(OrderRepository orderRepository, ImageRepository imageRepository, DeliveryRepository deliveryRepository) {
         this.orderRepository = orderRepository;
@@ -32,7 +37,11 @@ public class AggregatorService {
         Delivery delivery = deliveryRepository.getDeliveryInfoByCustomerIdAndOrderId(customerId, orderId);
         if (null == delivery) {
             Order order = orderRepository.getOrderByCustomerIdAndOrderId(customerId, orderId);
-            Image image = imageRepository.generateImage(orderId, customerId);
+            String content = deliveryApiURL + "/guest_arrival/order_id/" + orderId + "/customer_id/" + customerId;
+            ImageRequest imageRequest = new ImageRequest();
+            imageRequest.setContent(content);
+            Image image = imageRepository.generateImageByContent(imageRequest);
+            delivery = new Delivery();
             delivery.setCustomerId(order.getCustomerId());
             delivery.setStoreId(order.getStoreId());
             delivery.setOrderId(order.getOrderId());
@@ -56,6 +65,7 @@ public class AggregatorService {
         // TODO : Send Message to the Stores Team on Guest Arrival
         // Post to this parcel can be sent via the conveyor belt
         // Assume that, After sending the parcel via conveyor belt, the Stores Team system send True
+//        System.out.println("Customer has arrived OrderId" + orderId + " Customer Id " + customerId);
         return true;
     }
 }
