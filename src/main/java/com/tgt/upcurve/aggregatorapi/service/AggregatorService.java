@@ -29,17 +29,20 @@ public class AggregatorService {
     }
 
     public Delivery generateQRCode(Integer orderId, Integer customerId) {
-        Order order = orderRepository.getOrderByCustomerIdAndOrderId(customerId, orderId);
-        Image image = imageRepository.generateImage(orderId, customerId);
-        Delivery delivery = new Delivery();
-        delivery.setCustomerId(order.getCustomerId());
-        delivery.setStoreId(order.getStoreId());
-        delivery.setOrderId(order.getOrderId());
-        delivery.setPaymentStatus(order.getPaymentStatus());
-        delivery.setDeliveryStatus("NOT-DELIVERED");
-        delivery.setImageId(image.getId());
-        delivery.setImageCode(image.getImageCode());
-        return deliveryRepository.saveDelivery(delivery);
+        Delivery delivery = deliveryRepository.getDeliveryInfoByCustomerIdAndOrderId(customerId, orderId);
+        if (null == delivery) {
+            Order order = orderRepository.getOrderByCustomerIdAndOrderId(customerId, orderId);
+            Image image = imageRepository.generateImage(orderId, customerId);
+            delivery.setCustomerId(order.getCustomerId());
+            delivery.setStoreId(order.getStoreId());
+            delivery.setOrderId(order.getOrderId());
+            delivery.setPaymentStatus(order.getPaymentStatus());
+            delivery.setDeliveryStatus("NOT-DELIVERED");
+            delivery.setImageId(image.getId());
+            delivery.setImageCode(image.getImageCode());
+            delivery = deliveryRepository.saveDelivery(delivery);
+        }
+        return delivery;
     }
 
     public Delivery confirmDelivery(Integer orderId, Integer customerId) {
