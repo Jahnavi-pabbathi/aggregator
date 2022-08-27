@@ -30,17 +30,20 @@ public class AggregatorService {
     }
 
     public Delivery generateQRCode(Integer orderId, Integer customerId) {
-        Order order = orderRepository.getOrderByCustomerIdAndOrderId(customerId, orderId);
-        Image image = imageRepository.generateImage(orderId, customerId);
-        Delivery delivery = new Delivery();
-        delivery.setCustomerId(order.getCustomerId());
-        delivery.setStoreId(order.getStoreId());
-        delivery.setOrderId(order.getOrderId());
-        delivery.setPaymentStatus(order.getPaymentStatus());
-        delivery.setDeliveryStatus("NOT-DELIVERED");
-        delivery.setImageId(image.getId());
-        delivery.setImageCode(image.getImageCode());
-        return deliveryRepository.saveDelivery(delivery);
+        Delivery delivery = deliveryRepository.getDeliveryInfoByCustomerIdAndOrderId(customerId, orderId);
+        if (null == delivery) {
+            Order order = orderRepository.getOrderByCustomerIdAndOrderId(customerId, orderId);
+            Image image = imageRepository.generateImage(orderId, customerId);
+            delivery.setCustomerId(order.getCustomerId());
+            delivery.setStoreId(order.getStoreId());
+            delivery.setOrderId(order.getOrderId());
+            delivery.setPaymentStatus(order.getPaymentStatus());
+            delivery.setDeliveryStatus("NOT-DELIVERED");
+            delivery.setImageId(image.getId());
+            delivery.setImageCode(image.getImageCode());
+            delivery = deliveryRepository.saveDelivery(delivery);
+        }
+        return delivery;
     }
 
     public Delivery confirmDelivery(Integer orderId, Integer customerId) {
@@ -48,5 +51,12 @@ public class AggregatorService {
         delivery.setDeliveryStatus("DELIVERED");
         delivery.setPickupDate(LocalDateTime.now());
         return deliveryRepository.saveDelivery(delivery);
+    }
+
+    public Boolean informCustomerArrival(Integer orderId, Integer customerId) {
+        // TODO : Send Message to the Stores Team on Guest Arrival
+        // Post to this parcel can be sent via the conveyor belt
+        // Assume that, After sending the parcel via conveyor belt, the Stores Team system send True
+        return true;
     }
 }
