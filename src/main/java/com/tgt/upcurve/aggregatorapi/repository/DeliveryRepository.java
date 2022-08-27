@@ -14,6 +14,8 @@ public interface DeliveryRepository {
     public Delivery saveDelivery(@Validated @RequestBody Delivery delivery);
 
     @RequestMapping(method = RequestMethod.GET, path = "/fetch_delivery_by_id/customer_id/{customer_id}/order_id/{order_id}")
-    public Delivery getDeliveryInfoByCustomerIdAndOrderId(@Validated @PathVariable("customer_id") Integer customerId,
-                                                          @Validated @PathVariable("order_id") Integer orderId);
+    public Delivery getDeliveryInfoByCustomerIdAndOrderId(@Validated @PathVariable("customer_id")
+                                                                      Integer customerId,
+                                                          @Validated @PathVariable("order_id")
+                                                                  Integer orderId);
 }
