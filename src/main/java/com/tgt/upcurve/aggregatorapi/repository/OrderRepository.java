@@ -17,3 +17,4 @@ public interface OrderRepository {
     @RequestMapping(method = RequestMethod.GET, path="/fetch_order_by_id/customer_id/{customer_id}/order_id/{order_id}")
     Order getOrderByCustomerIdAndOrderId(@Validated @PathVariable("customer_id") Integer customerId, @Validated @PathVariable("order_id") Integer orderId);
 }
+

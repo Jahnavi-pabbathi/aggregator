@@ -1,0 +1,11 @@
+{
+  "id": 1,
+  "customerId": 100,
+  "storeId": 1514,
+  "orderId": 10,
+  "imageId": 25,
+  "imageCode": "iVBORw0KGgoAAAANSUhEUgAAAMgAAADIAQAAAACFI5MzAAABuElEQVR4Xu2V0WoEMQhFA/mtQH5d8LcC6blmO7Ms7Zu2LyPDziRnIVGv2vZv1j43LnvIQ2R/Say1vuZe8XLXsoQ4j42+11z8dC1riHVfjbO3TecOJlhEbEzt43Ut4acNIjoU0irC4/ja46XtGiJJ+G0f2skjx4jpGpG/Y/nEWudR8nB02hhksYJQUhyN1o3M6SsukU8MEY6IYuQPtVyZSyUs5R1rNIjs+WcJwcFwVZuKbFymguiTjUlo4/y4Qj6RLHo02OgUBPSOaCY5JyJERKi7+FXBuUTyo4TFfY1QfwmxzrzwrfSNj1inkgM1mayr8y35W0Bi+qkXcQf8pE9cnqYSGt5RPH4yMt46bC4xWmscfQoZh2cJCbFv9aKlWh6Kbg2ZcnCoyb4EWUKoWs48E4NwtreIphLXpOiaGDEuCO+sIdoLlbuC2+6IJhOcHFJ86DC8LiLU1VLeLEorAlpAZOrhugU94zSkAqIzYwrKWdn6jmgucT0SIsW1NS+WrlBAaKxCmrNSCO9CsqOSqWUWl0LSCd18TbkoOYb6C4igtE4OEWKPnQJiUsgrb/TYAwvIz/aQh8j+n3wBzUhX1zvBjFAAAAAASUVORK5CYII=",
+  "paymentStatus": "Paid",
+  "deliveryStatus": "Processed",
+  "pickupDate": "2022-05-04T21:00:30.000+00:00"
+}
