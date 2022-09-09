@@ -1,27 +1,8 @@
 spring:
   application:
     name: AggregatorAPI
-  datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:OrderDB
-    username: sa
-    password:
-    jpa:
-      generate-ddl: 'false'
-      database: H2
-      properties:
-        hibernate:
-          format_sql: true
-          order_inserts: true
-          order_updates: true
-          jdbc:
-            batch_size: 100
-            lob:
-              non_contextual_creation: 'true'
-        org:
-          hibernate:
-            flushMode: COMMIT
-      database-platform: org.hibernate.dialect.PostgreSQL95Dialect
-      hibernate:
-        ddl-auto: none
-      show-sql: true
+apis:
+  order: http://localhost:8081/order_api/v1
+  image: http://localhost:8082/image_api/v1
+  delivery: http://localhost:8083/delivery_api/v1
+  aggregator: http://localhost:8080/aggregator_api/v1

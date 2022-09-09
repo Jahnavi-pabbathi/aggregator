@@ -1,0 +1,22 @@
+{
+  "customerId": 20,
+  "orderId": 200,
+  "storeId": 2376,
+  "orderStatus": "processed",
+  "orderAmount": 200,
+  "paymentStatus": "paid",
+  "customerEmail": "xyz@gmail.com",
+  "customerMobile": "1234567890",
+  "orderItems": [
+    {
+      "orderId": 200,
+      "itemId": 2002,
+      "itemPrice": 267,
+      "itemDescription": "basketball",
+      "itemQuantity": 3
+    }
+  ]
+}
+
+
+
